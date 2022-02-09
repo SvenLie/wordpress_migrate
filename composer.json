@@ -24,7 +24,6 @@
     }
   },
   "replace": {
-    "svenlie/wordpress-migrate": "self.version",
     "typo3-ter/wordpress-migrate": "self.version"
   },
   "extra": {
