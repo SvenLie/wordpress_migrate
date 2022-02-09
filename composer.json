@@ -1,0 +1,35 @@
+{
+  "name": "svenlie/wordpress-migrate",
+  "type": "typo3-cms-extension",
+  "description": "",
+  "version": "0.0.1",
+  "authors": [
+    {
+      "name": "Sven Liebert",
+      "email": "mail@sven-liebert.de"
+    }
+  ],
+  "license": [
+    "GPL-2.0-or-later"
+  ],
+  "require": {
+    "typo3/cms-core": "^11.5"
+  },
+  "suggest": {
+    "georgringer/news": "^9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "SvenLie\\WordpressMigrate\\": "Classes"
+    }
+  },
+  "replace": {
+    "svenlie/wordpress-migrate": "self.version",
+    "typo3-ter/wordpress-migrate": "self.version"
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "wordpress_migrate"
+    }
+  }
+}

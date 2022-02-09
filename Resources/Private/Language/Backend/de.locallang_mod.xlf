@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2020-01-15T09:29:11Z" product-name="wordpress_migrate">
+        <header/>
+        <body>
+            <trans-unit id="mlang_tabs_tab" xml:space="preserve">
+                <source>Wordpress Migrate</source>
+                <target>Wordpress Migrate</target>
+            </trans-unit>
+            <trans-unit id="wordpressUrl" xml:space="preserve">
+                <source>URL of wordpress instance</source>
+                <target>URL der Wordpress-Instanz</target>
+            </trans-unit>
+            <trans-unit id="submit" xml:space="preserve">
+                <source>Start migration</source>
+                <target>Migration starten</target>
+            </trans-unit>
+            <trans-unit id="error.wordpressUrlNotFilled" xml:space="preserve">
+                <source>Wordpress url is not valid</source>
+                <target>Wordpress URL ist nicht gültig</target>
+            </trans-unit>
+            <trans-unit id="error.errorOccurredWhileRetrieving" xml:space="preserve">
+                <source>An error is ocurred while retrieving data.</source>
+                <target>Beim Abrufen von Daten ist ein Fehler aufgetreten.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
