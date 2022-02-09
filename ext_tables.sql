@@ -1,1 +1,0 @@
-ALTER TABLE tx_news_domain_model_news MODIFY bodytext mediumtext CHARACTER SET utf8;
