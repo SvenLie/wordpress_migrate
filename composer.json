@@ -1,7 +1,7 @@
 {
   "name": "svenlie/wordpress-migrate",
   "type": "typo3-cms-extension",
-  "description": "TYPO3 Extension for migration pages, posts, media, tags and categories to TYPO3",
+  "description": "TYPO3 Extension for migrate pages, posts, media, tags and categories to TYPO3",
   "version": "0.0.1",
   "authors": [
     {
