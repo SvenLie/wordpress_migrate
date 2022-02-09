@@ -48,7 +48,7 @@ class WordpressApiClient
         do {
             $currentPage++;
             try {
-                $response = $this->requestFactory->request($requestUri . "?per_page=" . $this::ITEMS_PER_PAGE . "&_fields=id,slug,title,content,excerpt,categories,tags&page=" . $currentPage,'GET');
+                $response = $this->requestFactory->request($requestUri . "?per_page=" . $this::ITEMS_PER_PAGE . "&_fields=id,slug,title,content,excerpt,categories,tags,date&page=" . $currentPage,'GET');
             } catch (RequestException $e) {
                 return false;
             }
@@ -59,6 +59,7 @@ class WordpressApiClient
                     $post = new Post();
                     $post->setId($content[$i]->id);
                     $post->setSlug($content[$i]->slug);
+                    $post->setDateTime($content[$i]->date);
                     $post->setCategories($content[$i]->categories);
                     $post->setTags($content[$i]->tags);
                     $post->setContent(htmlentities($content[$i]->content->rendered));
@@ -70,7 +71,7 @@ class WordpressApiClient
                 return false;
             }
         } while (count($content) == $this::ITEMS_PER_PAGE);
-
+        ksort($posts);
         return $posts;
     }
 
@@ -109,7 +110,7 @@ class WordpressApiClient
                 return false;
             }
         } while (count($content) == $this::ITEMS_PER_PAGE);
-
+        ksort($pages);
         return $pages;
     }
 
@@ -139,13 +140,13 @@ class WordpressApiClient
                     $comment->setParent($content[$i]->parent);
                     $comment->setContent(htmlentities($content[$i]->content->rendered));
 
-                    $comments[] = $comment;
+                    $comments[$comment->getId()] = $comment;
                 }
             } else {
                 return false;
             }
         } while (count($content) == $this::ITEMS_PER_PAGE);
-
+        ksort($comments);
         return $comments;
     }
 
@@ -175,13 +176,13 @@ class WordpressApiClient
                     $tag->setName($content[$i]->name);
                     $tag->setSlug($content[$i]->slug);
 
-                    $tags[] = $tag;
+                    $tags[$tag->getId()] = $tag;
                 }
             } else {
                 return false;
             }
         } while (count($content) == $this::ITEMS_PER_PAGE);
-
+        ksort($tags);
         return $tags;
     }
 
@@ -211,13 +212,13 @@ class WordpressApiClient
                     $category->setName($content[$i]->name);
                     $category->setSlug($content[$i]->slug);
 
-                    $categories[] = $category;
+                    $categories[$category->getId()] = $category;
                 }
             } else {
                 return false;
             }
         } while (count($content) == $this::ITEMS_PER_PAGE);
-
+        ksort($categories);
         return $categories;
     }
 }

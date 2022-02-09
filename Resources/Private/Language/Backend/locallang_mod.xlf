@@ -9,14 +9,29 @@
             <trans-unit id="wordpressUrl" xml:space="preserve">
                 <source>URL of wordpress instance</source>
             </trans-unit>
+            <trans-unit id="pagePid" xml:space="preserve">
+                <source>Page ID for page import</source>
+            </trans-unit>
+            <trans-unit id="newsPid" xml:space="preserve">
+                <source>Page ID for news import</source>
+            </trans-unit>
             <trans-unit id="submit" xml:space="preserve">
                 <source>Start migration</source>
             </trans-unit>
             <trans-unit id="error.wordpressUrlNotFilled" xml:space="preserve">
                 <source>Wordpress url is not valid</source>
             </trans-unit>
+            <trans-unit id="error.pagePidNotExisting" xml:space="preserve">
+                <source>Entered page-ID for page import is not valid.</source>
+            </trans-unit>
+            <trans-unit id="error.newsPidNotExisting" xml:space="preserve">
+                <source>Entered page-ID for news import is not valid.</source>
+            </trans-unit>
             <trans-unit id="error.errorOccurredWhileRetrieving" xml:space="preserve">
                 <source>An error is ocurred while retrieving data.</source>
+            </trans-unit>
+            <trans-unit id="warning.newsExtensionNotInstalled" xml:space="preserve">
+                <source>The news extension is not installed. If you continue, the news entries will not be imported.</source>
             </trans-unit>
         </body>
     </file>

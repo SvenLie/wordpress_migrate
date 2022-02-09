@@ -14,6 +14,7 @@ class PageUtility
 {
     final const CTYPE_HEADING = 'header';
     final const CTYPE_HTML = 'html';
+    final const DOKTYPE_PAGE = 1;
 
     public function __construct(PageRepository $pageRepository, ContentRepository $contentRepository, PersistenceManager $persistenceManager)
     {
@@ -26,16 +27,15 @@ class PageUtility
      * @param \SvenLie\WordpressMigrate\Domain\Model\WordpressApi\Page[] $pages
      * @return int
      */
-    public function insertPages(array $pages)
+    public function insertPages(array $pages, int $pid)
     {
-        ksort($pages);
         $insertedPageObjects = [];
         $this->pageRepository->injectPersistenceManager($this->persistenceManager);
         foreach ($pages as $page) {
             $pageObject = new Page();
             $pageObject->setTitle(html_entity_decode($page->getTitle()));
-            $pageObject->setDoktype(1);
-            $pageObject->setPid(1);
+            $pageObject->setDoktype($this::DOKTYPE_PAGE);
+            $pageObject->setPid($pid);
             $pageObject->setSlug("/" . $page->getSlug());
 
             if ($page->getParent() != 0) {
@@ -50,6 +50,16 @@ class PageUtility
         }
 
         return count($insertedPageObjects);
+    }
+
+    public function checkIfPageExist($pid): bool
+    {
+        $page = $this->pageRepository->findByUid($pid);
+
+        if ($page) {
+            return true;
+        }
+        return false;
     }
 
     protected function insertPageContent(WordpressApiPage $page, Page $pageObject) {

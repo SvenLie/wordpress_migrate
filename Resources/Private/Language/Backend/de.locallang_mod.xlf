@@ -11,6 +11,14 @@
                 <source>URL of wordpress instance</source>
                 <target>URL der Wordpress-Instanz</target>
             </trans-unit>
+            <trans-unit id="pagePid" xml:space="preserve">
+                <source>Page ID for page import</source>
+                <target>Seiten-ID für Seitenimport</target>
+            </trans-unit>
+            <trans-unit id="newsPid" xml:space="preserve">
+                <source>Page ID for news import</source>
+                <target>Seiten-ID für Newsimport</target>
+            </trans-unit>
             <trans-unit id="submit" xml:space="preserve">
                 <source>Start migration</source>
                 <target>Migration starten</target>
@@ -19,9 +27,21 @@
                 <source>Wordpress url is not valid</source>
                 <target>Wordpress URL ist nicht gültig</target>
             </trans-unit>
+            <trans-unit id="error.pagePidNotExisting" xml:space="preserve">
+                <source>Entered page-ID for page import is not valid.</source>
+                <target>Die eingegebene Seiten-ID für den Seitenimport ist nicht gültig.</target>
+            </trans-unit>
+            <trans-unit id="error.newsPidNotExisting" xml:space="preserve">
+                <source>Entered page-ID for news import is not valid.</source>
+                <target>Die eingegebene Seiten-ID für den Newsimport ist nicht gültig.</target>
+            </trans-unit>
             <trans-unit id="error.errorOccurredWhileRetrieving" xml:space="preserve">
                 <source>An error is ocurred while retrieving data.</source>
                 <target>Beim Abrufen von Daten ist ein Fehler aufgetreten.</target>
+            </trans-unit>
+            <trans-unit id="warning.newsExtensionNotInstalled" xml:space="preserve">
+                <source>The news extension is not installed. If you continue, the news entries will not be imported.</source>
+                <target>Die News-Erweiterung ist nicht installiert. Wenn Sie fortfahren werden die Newseinträge nicht importiert.</target>
             </trans-unit>
         </body>
     </file>

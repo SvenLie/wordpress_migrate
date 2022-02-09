@@ -6,6 +6,7 @@ class Post
 {
     protected int $id;
     protected string $slug;
+    protected string $dateTime;
     protected string $title;
     protected string $content;
     protected string $excerpt;
@@ -42,6 +43,22 @@ class Post
     public function setSlug(string $slug): void
     {
         $this->slug = $slug;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDateTime(): string
+    {
+        return $this->dateTime;
+    }
+
+    /**
+     * @param string $dateTime
+     */
+    public function setDateTime(string $dateTime): void
+    {
+        $this->dateTime = $dateTime;
     }
 
     /**

@@ -7,7 +7,19 @@
             <label for="wordpressUrl" id="wordpressUrlLabel">
                 <f:translate key="LLL:EXT:wordpress_migrate/Resources/Private/Language/Backend/locallang_mod.xlf:wordpressUrl"/>:
             </label>
-            <f:form.textfield class="form-control" id="wordpressUrl" name="wordpressUrl" />
+            <f:form.textfield class="form-control" id="wordpressUrl" name="wordpressUrl" required="required" />
+        </div>
+        <div class="form-group">
+            <label for="pagePid" id="pagePidLabel">
+                <f:translate key="LLL:EXT:wordpress_migrate/Resources/Private/Language/Backend/locallang_mod.xlf:pagePid"/>:
+            </label>
+            <f:form.textfield class="form-control" id="pagePid" name="pagePid" required="required"/>
+        </div>
+        <div class="form-group">
+            <label for="newsPid" id="newsPidLabel">
+                <f:translate key="LLL:EXT:wordpress_migrate/Resources/Private/Language/Backend/locallang_mod.xlf:newsPid"/>:
+            </label>
+            <f:form.textfield class="form-control" id="newsPid" name="newsPid" required="required" />
         </div>
         <f:form.button class="btn btn-success">
             <f:translate
