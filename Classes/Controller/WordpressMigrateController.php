@@ -118,7 +118,7 @@ class WordpressMigrateController extends ActionController
                 $this->postUtility->insertPosts($posts, $newsPid, $insertedCategoryObjects, $insertedTagObjects);
 
                 $this->addFlashMessage(
-                    "geht",
+                    LocalizationUtility::translate("LLL:EXT:wordpress_migrate/Resources/Private/Language/Backend/locallang_mod.xlf:success.migrated"),
                     '',
                     AbstractMessage::OK
                 );

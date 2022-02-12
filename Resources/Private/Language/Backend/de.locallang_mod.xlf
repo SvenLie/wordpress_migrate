@@ -63,6 +63,10 @@
                 <source>The comment extension is not installed. If you continue, the comment entries will not be imported.</source>
                 <target>Die Kommentar-Erweiterung ist nicht installiert. Wenn Sie fortfahren werden die Kommentareinträge nicht importiert.</target>
             </trans-unit>
+            <trans-unit id="success.migrated" xml:space="preserve">
+                <source>Migration successfully done.</source>
+                <target>Migration erfolgreich abgeschlossen.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
