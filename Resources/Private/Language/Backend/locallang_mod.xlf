@@ -33,6 +33,9 @@
             <trans-unit id="warning.newsExtensionNotInstalled" xml:space="preserve">
                 <source>The news extension is not installed. If you continue, the news entries will not be imported.</source>
             </trans-unit>
+            <trans-unit id="warning.commentExtensionNotInstalled" xml:space="preserve">
+                <source>The comment extension is not installed. If you continue, the comment entries will not be imported.</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

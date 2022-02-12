@@ -43,6 +43,10 @@
                 <source>The news extension is not installed. If you continue, the news entries will not be imported.</source>
                 <target>Die News-Erweiterung ist nicht installiert. Wenn Sie fortfahren werden die Newseinträge nicht importiert.</target>
             </trans-unit>
+            <trans-unit id="warning.commentExtensionNotInstalled" xml:space="preserve">
+                <source>The comment extension is not installed. If you continue, the comment entries will not be imported.</source>
+                <target>Die Kommentar-Erweiterung ist nicht installiert. Wenn Sie fortfahren werden die Kommentareinträge nicht importiert.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

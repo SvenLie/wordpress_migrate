@@ -21,6 +21,7 @@ class WordpressMigrateController extends ActionController
         $this->postUtility = $postUtility;
         $loadedExtensions = ExtensionManagementUtility::getLoadedExtensionListArray();
         $this->isNewsExtensionLoaded = in_array("news",$loadedExtensions);
+        $this->isCommentExtensionLoaded = in_array("ns_news_comments",$loadedExtensions);
     }
 
     public function indexAction()
@@ -30,6 +31,14 @@ class WordpressMigrateController extends ActionController
         if (!$this->isNewsExtensionLoaded) {
             $this->addFlashMessage(
                 LocalizationUtility::translate("LLL:EXT:wordpress_migrate/Resources/Private/Language/Backend/locallang_mod.xlf:warning.newsExtensionNotInstalled"),
+                '',
+                AbstractMessage::WARNING
+            );
+        }
+
+        if (!$this->isCommentExtensionLoaded) {
+            $this->addFlashMessage(
+                LocalizationUtility::translate("LLL:EXT:wordpress_migrate/Resources/Private/Language/Backend/locallang_mod.xlf:warning.commentExtensionNotInstalled"),
                 '',
                 AbstractMessage::WARNING
             );
