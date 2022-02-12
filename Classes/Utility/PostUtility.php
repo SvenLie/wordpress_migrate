@@ -25,7 +25,7 @@ class PostUtility
      * @return false|void
      * @throws \Exception
      */
-    public function insertPosts(array $posts, int $pid, array $insertedCategoryObjects)
+    public function insertPosts(array $posts, int $pid, array|bool $insertedCategoryObjects, array|bool $insertedTagObjects)
     {
         if (!$this->isNewsExtensionLoaded) {
             return false;
@@ -53,6 +53,15 @@ class PostUtility
                     $relatedCategoryObjects->attach($relatedCategoryObject);
                 }
                 $postObject->setCategories($relatedCategoryObjects);
+            }
+
+            if (!empty($post->getTags())) {
+                $relatedTagObjects = new ObjectStorage();
+                foreach ($post->getTags() as $tagId) {
+                    $relatedTagObject = $insertedTagObjects[$tagId];
+                    $relatedTagObjects->attach($relatedTagObject);
+                }
+                $postObject->setTags($relatedTagObjects);
             }
 
             $newsRepository->add($postObject);

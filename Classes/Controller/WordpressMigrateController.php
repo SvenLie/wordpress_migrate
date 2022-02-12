@@ -6,6 +6,7 @@ use SvenLie\WordpressMigrate\Service\WordpressApiClient;
 use SvenLie\WordpressMigrate\Utility\CategoryUtility;
 use SvenLie\WordpressMigrate\Utility\PageUtility;
 use SvenLie\WordpressMigrate\Utility\PostUtility;
+use SvenLie\WordpressMigrate\Utility\TagUtility;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
@@ -14,13 +15,14 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 class WordpressMigrateController extends ActionController
 {
-    public function __construct(ModuleTemplateFactory $moduleTemplateFactory, WordpressApiClient $wordpressApiClient, PageUtility $pageUtility, PostUtility $postUtility, CategoryUtility $categoryUtility)
+    public function __construct(ModuleTemplateFactory $moduleTemplateFactory, WordpressApiClient $wordpressApiClient, PageUtility $pageUtility, PostUtility $postUtility, CategoryUtility $categoryUtility, TagUtility $tagUtility)
     {
         $this->wordpressApiClient = $wordpressApiClient;
         $this->moduleTemplateFactory = $moduleTemplateFactory;
         $this->pageUtility = $pageUtility;
         $this->postUtility = $postUtility;
         $this->categoryUtility = $categoryUtility;
+        $this->tagUtility = $tagUtility;
         $loadedExtensions = ExtensionManagementUtility::getLoadedExtensionListArray();
         $this->isNewsExtensionLoaded = in_array("news",$loadedExtensions);
         $this->isCommentExtensionLoaded = in_array("ns_news_comments",$loadedExtensions);
@@ -112,7 +114,8 @@ class WordpressMigrateController extends ActionController
             } else {
                 $this->pageUtility->insertPages($pages, $pagePid);
                 $insertedCategoryObjects = $this->categoryUtility->insertCategories($categories, $categoryPid);
-                $this->postUtility->insertPosts($posts, $newsPid, $insertedCategoryObjects);
+                $insertedTagObjects = $this->tagUtility->insertTags($tags, $tagPid);
+                $this->postUtility->insertPosts($posts, $newsPid, $insertedCategoryObjects, $insertedTagObjects);
 
                 $this->addFlashMessage(
                     "geht",
