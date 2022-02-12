@@ -3,6 +3,7 @@
 namespace SvenLie\WordpressMigrate\Controller;
 
 use SvenLie\WordpressMigrate\Service\WordpressApiClient;
+use SvenLie\WordpressMigrate\Utility\CategoryUtility;
 use SvenLie\WordpressMigrate\Utility\PageUtility;
 use SvenLie\WordpressMigrate\Utility\PostUtility;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
@@ -13,12 +14,13 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 class WordpressMigrateController extends ActionController
 {
-    public function __construct(ModuleTemplateFactory $moduleTemplateFactory, WordpressApiClient $wordpressApiClient, PageUtility $pageUtility, PostUtility $postUtility)
+    public function __construct(ModuleTemplateFactory $moduleTemplateFactory, WordpressApiClient $wordpressApiClient, PageUtility $pageUtility, PostUtility $postUtility, CategoryUtility $categoryUtility)
     {
         $this->wordpressApiClient = $wordpressApiClient;
         $this->moduleTemplateFactory = $moduleTemplateFactory;
         $this->pageUtility = $pageUtility;
         $this->postUtility = $postUtility;
+        $this->categoryUtility = $categoryUtility;
         $loadedExtensions = ExtensionManagementUtility::getLoadedExtensionListArray();
         $this->isNewsExtensionLoaded = in_array("news",$loadedExtensions);
         $this->isCommentExtensionLoaded = in_array("ns_news_comments",$loadedExtensions);
@@ -53,6 +55,8 @@ class WordpressMigrateController extends ActionController
         $wordpressUrl = $this->request->getArgument('wordpressUrl');
         $pagePid = $this->request->getArgument('pagePid');
         $newsPid = $this->request->getArgument('newsPid');
+        $categoryPid = $this->request->getArgument('categoryPid');
+        $tagPid = $this->request->getArgument('tagPid');
 
         if (!$this->pageUtility->checkIfPageExist($pagePid)) {
             $this->addFlashMessage(
@@ -66,6 +70,24 @@ class WordpressMigrateController extends ActionController
         if (!$this->pageUtility->checkIfPageExist($newsPid)) {
             $this->addFlashMessage(
                 LocalizationUtility::translate("LLL:EXT:wordpress_migrate/Resources/Private/Language/Backend/locallang_mod.xlf:error.newsPidNotExisting"),
+                '',
+                AbstractMessage::ERROR
+            );
+            $this->redirect('index');
+        }
+
+        if (!$this->pageUtility->checkIfPageExist($categoryPid)) {
+            $this->addFlashMessage(
+                LocalizationUtility::translate("LLL:EXT:wordpress_migrate/Resources/Private/Language/Backend/locallang_mod.xlf:error.categoryPidNotExisting"),
+                '',
+                AbstractMessage::ERROR
+            );
+            $this->redirect('index');
+        }
+
+        if (!$this->pageUtility->checkIfPageExist($tagPid)) {
+            $this->addFlashMessage(
+                LocalizationUtility::translate("LLL:EXT:wordpress_migrate/Resources/Private/Language/Backend/locallang_mod.xlf:error.tagPidNotExisting"),
                 '',
                 AbstractMessage::ERROR
             );
@@ -88,8 +110,9 @@ class WordpressMigrateController extends ActionController
                     AbstractMessage::ERROR
                 );
             } else {
-                $this->postUtility->insertPosts($posts, $newsPid);
                 $this->pageUtility->insertPages($pages, $pagePid);
+                $insertedCategoryObjects = $this->categoryUtility->insertCategories($categories, $categoryPid);
+                $this->postUtility->insertPosts($posts, $newsPid, $insertedCategoryObjects);
 
                 $this->addFlashMessage(
                     "geht",

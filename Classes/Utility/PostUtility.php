@@ -5,10 +5,10 @@ namespace SvenLie\WordpressMigrate\Utility;
 use GeorgRinger\News\Domain\Model\News;
 use GeorgRinger\News\Domain\Repository\NewsRepository;
 use SvenLie\WordpressMigrate\Domain\Model\WordpressApi\Post;
-use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class PostUtility
 {
@@ -25,7 +25,7 @@ class PostUtility
      * @return false|void
      * @throws \Exception
      */
-    public function insertPosts(array $posts, int $pid)
+    public function insertPosts(array $posts, int $pid, array $insertedCategoryObjects)
     {
         if (!$this->isNewsExtensionLoaded) {
             return false;
@@ -45,6 +45,16 @@ class PostUtility
             $postObject->setTeaser(strip_tags(html_entity_decode($post->getExcerpt())));
             $postObject->setPathSegment($post->getSlug());
             $postObject->setType(0);
+
+            if (!empty($post->getCategories())) {
+                $relatedCategoryObjects = new ObjectStorage();
+                foreach ($post->getCategories() as $categoryId) {
+                    $relatedCategoryObject = $insertedCategoryObjects[$categoryId];
+                    $relatedCategoryObjects->attach($relatedCategoryObject);
+                }
+                $postObject->setCategories($relatedCategoryObjects);
+            }
+
             $newsRepository->add($postObject);
             $this->persistenceManager->persistAll();
             $insertedPostObjects[$post->getId()] = $postObject;

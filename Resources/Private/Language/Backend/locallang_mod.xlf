@@ -15,6 +15,12 @@
             <trans-unit id="newsPid" xml:space="preserve">
                 <source>Page ID for news import</source>
             </trans-unit>
+            <trans-unit id="categoryPid" xml:space="preserve">
+                <source>Page ID for category import</source>
+            </trans-unit>
+            <trans-unit id="tagPid" xml:space="preserve">
+                <source>Page ID for tag import</source>
+            </trans-unit>
             <trans-unit id="submit" xml:space="preserve">
                 <source>Start migration</source>
             </trans-unit>
@@ -26,6 +32,12 @@
             </trans-unit>
             <trans-unit id="error.newsPidNotExisting" xml:space="preserve">
                 <source>Entered page-ID for news import is not valid.</source>
+            </trans-unit>
+            <trans-unit id="error.categoryPidNotExisting" xml:space="preserve">
+                <source>Entered page-ID for category import is not valid.</source>
+            </trans-unit>
+            <trans-unit id="error.tagPidNotExisting" xml:space="preserve">
+                <source>Entered page-ID for tag import is not valid.</source>
             </trans-unit>
             <trans-unit id="error.errorOccurredWhileRetrieving" xml:space="preserve">
                 <source>An error is ocurred while retrieving data.</source>

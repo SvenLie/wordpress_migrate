@@ -14,4 +14,7 @@ return [
             ]
         ]
     ],
+    \SvenLie\WordpressMigrate\Domain\Model\Category::class => [
+        'tableName' => 'sys_category',
+    ],
 ];
