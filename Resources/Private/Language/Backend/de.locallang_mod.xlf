@@ -27,6 +27,10 @@
                 <source>Page ID for tag import</source>
                 <target>Seiten-ID für Tagimport</target>
             </trans-unit>
+            <trans-unit id="commentPid" xml:space="preserve">
+                <source>Page ID for comment import</source>
+                <target>Seiten-ID für Kommentarimport</target>
+            </trans-unit>
             <trans-unit id="submit" xml:space="preserve">
                 <source>Start migration</source>
                 <target>Migration starten</target>
@@ -51,6 +55,10 @@
                 <source>Entered page-ID for tag import is not valid.</source>
                 <target>Die eingegebene Seiten-ID für den Tagimport ist nicht gültig.</target>
             </trans-unit>
+            <trans-unit id="error.commentPidNotExisting" xml:space="preserve">
+                <source>Entered page-ID for comment import is not valid.</source>
+                <target>Die eingegebene Seiten-ID für den Kommentarimport ist nicht gültig.</target>
+            </trans-unit>
             <trans-unit id="error.errorOccurredWhileRetrieving" xml:space="preserve">
                 <source>An error is ocurred while retrieving data.</source>
                 <target>Beim Abrufen von Daten ist ein Fehler aufgetreten.</target>
@@ -62,6 +70,10 @@
             <trans-unit id="warning.commentExtensionNotInstalled" xml:space="preserve">
                 <source>The comment extension is not installed. If you continue, the comment entries will not be imported.</source>
                 <target>Die Kommentar-Erweiterung ist nicht installiert. Wenn Sie fortfahren werden die Kommentareinträge nicht importiert.</target>
+            </trans-unit>
+            <trans-unit id="success.migrated" xml:space="preserve">
+                <source>Migration successfully done.</source>
+                <target>Migration erfolgreich abgeschlossen.</target>
             </trans-unit>
         </body>
     </file>

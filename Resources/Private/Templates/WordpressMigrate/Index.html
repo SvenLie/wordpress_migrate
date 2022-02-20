@@ -15,24 +15,35 @@
             </label>
             <f:form.textfield class="form-control" id="pagePid" name="pagePid" required="required"/>
         </div>
-        <div class="form-group">
-            <label for="newsPid" id="newsPidLabel">
-                <f:translate key="LLL:EXT:wordpress_migrate/Resources/Private/Language/Backend/locallang_mod.xlf:newsPid"/>:
-            </label>
-            <f:form.textfield class="form-control" id="newsPid" name="newsPid" required="required" />
-        </div>
+        <f:if condition="{isNewsExtensionLoaded}">
+            <div class="form-group">
+                <label for="newsPid" id="newsPidLabel">
+                    <f:translate key="LLL:EXT:wordpress_migrate/Resources/Private/Language/Backend/locallang_mod.xlf:newsPid"/>:
+                </label>
+                <f:form.textfield class="form-control" id="newsPid" name="newsPid" required="required" />
+            </div>
+            <div class="form-group">
+                <label for="tagPid" id="tagPidLabel">
+                    <f:translate key="LLL:EXT:wordpress_migrate/Resources/Private/Language/Backend/locallang_mod.xlf:tagPid"/>:
+                </label>
+                <f:form.textfield class="form-control" id="tagPid" name="tagPid" required="required" />
+            </div>
+            <f:if condition="{isCommentExtensionLoaded}">
+                <div class="form-group">
+                    <label for="commentPid" id="commentPidLabel">
+                        <f:translate key="LLL:EXT:wordpress_migrate/Resources/Private/Language/Backend/locallang_mod.xlf:commentPid"/>:
+                    </label>
+                    <f:form.textfield class="form-control" id="commentPid" name="commentPid" required="required" />
+                </div>
+            </f:if>
+        </f:if>
         <div class="form-group">
             <label for="categoryPid" id="categoryPidLabel">
                 <f:translate key="LLL:EXT:wordpress_migrate/Resources/Private/Language/Backend/locallang_mod.xlf:categoryPid"/>:
             </label>
             <f:form.textfield class="form-control" id="categoryPid" name="categoryPid" required="required" />
         </div>
-        <div class="form-group">
-            <label for="tagPid" id="tagPidLabel">
-                <f:translate key="LLL:EXT:wordpress_migrate/Resources/Private/Language/Backend/locallang_mod.xlf:tagPid"/>:
-            </label>
-            <f:form.textfield class="form-control" id="tagPid" name="tagPid" required="required" />
-        </div>
+
         <f:form.button class="btn btn-success">
             <f:translate
                     key="LLL:EXT:wordpress_migrate/Resources/Private/Language/Backend/locallang_mod.xlf:submit"/>
