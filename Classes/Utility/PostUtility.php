@@ -4,7 +4,6 @@ namespace SvenLie\WordpressMigrate\Utility;
 
 use GeorgRinger\News\Domain\Model\News;
 use GeorgRinger\News\Domain\Repository\NewsRepository;
-use SvenLie\WordpressMigrate\Domain\Model\WordpressApi\Post;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
@@ -20,11 +19,6 @@ class PostUtility
         $this->persistenceManager = $persistenceManager;
     }
 
-    /**
-     * @param Post[] $posts
-     * @return false|void
-     * @throws \Exception
-     */
     public function insertPosts(array $posts, int $pid, array|bool $insertedCategoryObjects, array|bool $insertedTagObjects)
     {
         if (!$this->isNewsExtensionLoaded) {
@@ -69,6 +63,6 @@ class PostUtility
             $insertedPostObjects[$post->getId()] = $postObject;
         }
 
-        return count($insertedPostObjects);
+        return $insertedPostObjects;
     }
 }
